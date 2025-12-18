@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Bitto 💖</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transition: 0.5s;
+      }
+
+      body.night {
+        background: linear-gradient(135deg, #1f1f2e, #2c2c44);
+      }
+
+      .container {
+        background: white;
+        max-width: 420px;
+        width: 100%;
+        border-radius: 22px;
+        padding: 25px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        animation: fadeIn 1s ease;
+      }
+
+      body.night .container {
+        background: #2f2f46;
+        color: #eee;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      h1 {
+        color: #ff5c8d;
+      }
+
+      .subtitle {
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      .card {
+        background: #fff0f6;
+        border-radius: 16px;
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+
+      body.night .card {
+        background: #3b3b5c;
+      }
+
+      .card h3 {
+        color: #ff5c8d;
+        margin-bottom: 6px;
+      }
+
+      .card p {
+        font-size: 14px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 14px;
+        background: #ff5c8d;
+        color: white;
+        font-size: 15px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background: #ff3b78;
+        transform: scale(1.05);
+      }
+
+      .toggle {
+        background: #6c63ff;
+      }
+
+      .timer {
+        font-size: 22px;
+        margin-top: 8px;
+        font-weight: 600;
+      }
+
+      footer {
+        margin-top: 12px;
+        font-size: 12px;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Mehak ji🤌</h1>
+      <p class="subtitle">
+        This little calm space is just for you, Mehak 🤍, hope it helps you in
+        anyway
+      </p>
+
+      <div class="card">
+        <h3>💌 A Gentle Reminder</h3>
+        <p>
+          I know periods can be uncomfortable and tiring, Mehak.<br />
+          Please rest, and yeahhh ...be kind to yourself 🌸
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌷 Comfort Checklist</h3>
+        <p>🫖 Warm drink</p>
+        <p>🔥 Heating pad</p>
+        <p>🍫 Chocolate (non-negotiable 😌)</p>
+        <p>🛌 Rest well</p>
+        <p>💧 Stay hydrated</p>
+        <p>Note : if you need anything just let me know sirr.</p>
+      </div>
+
+      <div class="card">
+        <h3>⏰ 25-Minute Rest Timer</h3>
+        <div class="timer" id="timer">25:00</div>
+        <button class="btn" onclick="startTimer()">Start Rest</button>
+      </div>
+
+      <div class="card">
+        <h3>🎵 Calm Background Music</h3>
+        <button class="btn" onclick="toggleMusic()">Play / Pause Music</button>
+        <audio id="music" loop>
+          <source
+            src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5f7b5e5bfb.mp3?filename=calm-meditation-ambient-110397.mp3"
+          />
+        </audio>
+      </div>
+
+      <div class="card">
+        <h3>🌙 Night / Calm Mode</h3>
+        <button class="btn toggle" onclick="toggleNight()">
+          Toggle Calm Mode
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>🤗 One-Tap Hug</h3>
+        <button
+          class="btn"
+          onclick="window.location.href='https://wa.me/?text=Big%20warm%20hug%20for%20you%20Bitto%20🤗💖%20I’m%20always%20here'"
+        >
+          Send Hug on WhatsApp
+        </button>
+      </div>
+
+      <footer>take caree Mehak (Bitto)</footer>
+    </div>
+
+    <script>
+      let time = 1500;
+      let timerInterval;
+      const music = document.getElementById("music");
+
+      function startTimer() {
+        clearInterval(timerInterval);
+        time = 1500;
+        timerInterval = setInterval(() => {
+          let m = Math.floor(time / 60);
+          let s = time % 60;
+          s = s < 10 ? "0" + s : s;
+          document.getElementById("timer").innerText = `${m}:${s}`;
+          if (time <= 0) {
+            clearInterval(timerInterval);
+            alert("Rest time over 💕 Take care Bitto!");
+          }
+          time--;
+        }, 1000);
+      }
+
+      function toggleNight() {
+        document.body.classList.toggle("night");
+      }
+
+      function toggleMusic() {
+        if (music.paused) music.play();
+        else music.pause();
+      }
+    </script>
+  </body>
+</html>
